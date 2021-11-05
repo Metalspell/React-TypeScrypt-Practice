@@ -6,12 +6,12 @@ interface UserListByAPIProps {
   apiUsers: IUser[]
 }
 
-const UserListByApi: FC<UserListByAPIProps> = ({apiUsers}) => {
+const UserListByApi: FC<UserListByAPIProps> = ({ apiUsers }) => {
   return (
     <div>
       {apiUsers.map(user =>
         <UserItem key={user.id} user={user} />
-        )}
+      )}
     </div>
   )
 }
