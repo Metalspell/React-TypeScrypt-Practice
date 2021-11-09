@@ -17,7 +17,6 @@ const App = () => {
 
   useEffect(() => {
     fetchUsers()
-    console.log(apiUsers)
   }, []);
 
   async function fetchUsers() {

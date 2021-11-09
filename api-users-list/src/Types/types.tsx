@@ -15,3 +15,11 @@ export interface IAddress {
 export interface TableNavData {
   text: string;
 }
+
+export interface sizeCells {
+  size: string;
+}
+
+export interface tableItemCount {
+  countOfUsers: number;
+}

@@ -1,0 +1,23 @@
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  width: inherit;
+}
+
+.header-item {
+  border: 1px solid black;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+}
+
+.header-nav .active {
+  border: 3px solid black;
+  border-bottom: none;
+}
+
+.header-nav .inactive {
+  display: flex;
+  width: 25vw;
+  justify-content: center;
+}

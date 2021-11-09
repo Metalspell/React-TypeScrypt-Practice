@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Card from './Components/Card';
 import { CardVariant } from './Components/Card';
@@ -11,8 +11,14 @@ const App = () => {
   const [apiUsers, setApiUsers] = useState<IUser[]>([]);
 
   const users: IUser[] = [
-    { id: 1, name: 'Vasya', email: 'blabla@bla.ua', address: { city: 'Kiev', street: 'Sadovaya', zipcode: '123' } },
-    { id: 1, name: 'Galya', email: 'blabla@bla.ua', address: { city: 'Lviv', street: 'Uyutnaya', zipcode: '435' } }
+    {
+      id: 1, name: 'Vasya', email: 'blabla@bla.ua',
+      address: { city: 'Kiev', street: 'Sadovaya', zipcode: '123' }
+    },
+    {
+      id: 1, name: 'Galya', email: 'blabla@bla.ua',
+      address: { city: 'Lviv', street: 'Uyutnaya', zipcode: '435' }
+    }
   ]
 
   useEffect(() => {
@@ -38,7 +44,7 @@ const App = () => {
       </ Card>
       <UserList users={users} />
       <>
-      <UserListByApi apiUsers={apiUsers}/>
+        <UserListByApi apiUsers={apiUsers} />
       </>
     </div >
   )
