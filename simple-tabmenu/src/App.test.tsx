@@ -8,3 +8,4 @@ describe("App", () => {
     expect(screen.getAllByRole('tab')).toHaveLength(3);
   })
 })
+
