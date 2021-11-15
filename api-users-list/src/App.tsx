@@ -25,7 +25,7 @@ const App = () => {
       setApiUsers(response.data);
       console.log(response.data)
     } catch (e) {
-      alert('Error!!!');
+      alert('Holy shit! No data about users!');
     };
   };
 

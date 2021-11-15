@@ -16,7 +16,7 @@
   border-bottom: none;
 }
 
-.header-nav .inactive {
+.header-nav button .inactive {
   display: flex;
   width: 25vw;
   justify-content: center;

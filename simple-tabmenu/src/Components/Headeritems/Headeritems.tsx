@@ -1,10 +1,12 @@
 import React, { FC, useState } from 'react';
-import { TabNav, Contacts, Foto, About} from '../../Types/types'
+import { TabNav, Contacts, Foto, About } from '../../Types/types'
 import '../Headeritems/Headeritems.css';
 import InfoOutPut from '../Infooutput/Infooutput';
+import Button, { ButtonProps } from '../Button/Button';
 
-interface HeaderElementsProps {
+export interface HeaderElementsProps extends ButtonProps {
   headerNavElem: TabNav[];
+  isActive?: boolean;
 }
 
 const myContacts: Contacts[] = [
@@ -16,14 +18,13 @@ const myFoto: Foto[] = [
 ]
 
 const aboutMe: About[] = [
-  { text: "My name is Dmitry and I am a beginning a web developer!" }
+  { text: "My name is Dmitry and I am a beginning a web developer:)" }
 ]
 
-
-const HeaderItems: FC<HeaderElementsProps> = ({ headerNavElem }) => {
+const HeaderItems: FC<HeaderElementsProps> = ({ headerNavElem, isActive, ...props }) => {
 
   const [clickTab, setclickTab] = useState<string>('');
-  const handleMouseEvent = (event: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
     setclickTab(event.currentTarget.id);
   };
 
@@ -32,9 +33,10 @@ const HeaderItems: FC<HeaderElementsProps> = ({ headerNavElem }) => {
       <div className='header-nav'>
         {headerNavElem.map((items, i) => {
           return (
-            <div id={`${i}`} onClick={handleMouseEvent}
-              className={clickTab === `${i}` ? "header-item active" : "inactive"}
-              key={i}><h1>{items.text}</h1></div>
+            <Button variant={clickTab === `${i}` ? "primary" : "secondary"}
+              id={`${i}`} onClick={handleMouseEvent} key={i}>
+              <h1>{items.text}</h1>
+            </Button>
           )
         })}
       </div>

@@ -10,24 +10,27 @@ interface OutputProps {
 }
 
 const InfoOutPut: FC<OutputProps> = ({ myContacts, myFoto, about, click }) => {
-  const [activeContent, setactiveContent] = useState<string|undefined>('');
+  const [activeContent, setactiveContent] = useState<string | undefined>('');
 
   useEffect(() => {
     setactiveContent(click)
   }, [click]);
 
   console.log(activeContent)
-  
+
   return (
     <div className='output-wrapper'>
       <div className={activeContent === '2' ? "content-item active  " : "inactive"}>
-        <h1>{myContacts[0].contacts}</h1>
+        <h1>Tab 3</h1>
+        <h2>{myContacts[0].contacts}</h2>
       </div>
       <div className={activeContent === '1' ? "content-item active" : "inactive"}>
+        <h1>Tab 2</h1>
         <img src={myFoto[0].link} alt="" />
       </div>
       <div className={activeContent === '0' ? "content-item active" : "inactive"}>
-        <h1>{about[0].text}</h1>
+        <h1>Tab 1</h1>
+        <h2>{about[0].text}</h2>
       </div>
     </div>
   )

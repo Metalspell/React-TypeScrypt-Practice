@@ -1,0 +1,29 @@
+.root {
+  padding: 0.5rem 1.5rem;
+}
+
+.primary {
+  background-color       : rgb(41, 194, 130);
+  color                  : white;
+  padding                : 1rem 2rem;
+  width                  : 33.6%;
+  border-bottom          : none;
+  border-top-left-radius : 15px;
+  border-top-right-radius: 15px;
+}
+
+.secondary {
+  background-color       : white;
+  color                  : black;
+  padding                : 1rem 2rem;
+  width                  : 33.6%;
+  border-bottom          : none;
+  border-top-left-radius : 15px;
+  border-top-right-radius: 15px;
+}
+
+.tertiary {
+  background-color: rgb(230, 26, 145);
+  color           : rgb(134, 129, 129);
+  padding         : 2rem 6rem;
+}

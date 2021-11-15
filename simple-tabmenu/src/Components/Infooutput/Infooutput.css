@@ -1,24 +1,23 @@
 .output-wrapper {
   position: relative;
-  border: 1px solid black;
-  width: inherit;
-  height: 35rem;
+  border  : 2px solid black;
+  width   : inherit;
+  height  : auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .content-item {
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  width          : 100%;
+  height         : 100%;
   justify-content: center;
-  align-items: center;
-}
-
-.content-item.active {
-  display: flex;
-  border: 3px solid black;
+  align-items    : center;
+  flex-direction : column;
+  display        : flex;
+  padding        : 2rem 0rem;
 }
 
 .output-wrapper .inactive {
   display: none;
-  border: none;
+  border : none;
 }
