@@ -7,16 +7,17 @@ interface OutputProps {
   myFoto: Foto[];
   about: About[];
   click?: string;
+  active?: boolean;
 }
 
-const InfoOutPut: FC<OutputProps> = ({ myContacts, myFoto, about, click }) => {
+const InfoOutPut: FC<OutputProps> = ({ myContacts, myFoto, about, click, active }) => {
   const [activeContent, setactiveContent] = useState<string | undefined>('');
+  const [activeTab, setactiveTab] = useState<boolean | undefined>(false);
 
   useEffect(() => {
     setactiveContent(click)
-  }, [click]);
-
-  console.log(activeContent)
+    setactiveTab(active);
+  }, [click, active]);
 
   return (
     <div className='output-wrapper'>
@@ -28,7 +29,7 @@ const InfoOutPut: FC<OutputProps> = ({ myContacts, myFoto, about, click }) => {
         <h1>Tab 2</h1>
         <img src={myFoto[0].link} alt="" />
       </div>
-      <div className={activeContent === '0' ? "content-item active" : "inactive"}>
+      <div className={activeContent === '0' && activeTab === true ? "content-item active" : "inactive"}>
         <h1>Tab 1</h1>
         <h2>{about[0].text}</h2>
       </div>

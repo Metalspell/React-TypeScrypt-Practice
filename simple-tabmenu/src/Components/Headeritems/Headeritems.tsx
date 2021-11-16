@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { TabNav, Contacts, Foto, About } from '../../Types/types'
 import '../Headeritems/Headeritems.css';
 import InfoOutPut from '../Infooutput/Infooutput';
@@ -6,7 +6,6 @@ import Button, { ButtonProps } from '../Button/Button';
 
 export interface HeaderElementsProps extends ButtonProps {
   headerNavElem: TabNav[];
-  isActive?: boolean;
 }
 
 const myContacts: Contacts[] = [
@@ -23,14 +22,24 @@ const aboutMe: About[] = [
 
 const HeaderItems: FC<HeaderElementsProps> = ({ headerNavElem, isActive, ...props }) => {
 
-  const [clickTab, setclickTab] = useState<string>('');
+  const [clickTab, setclickTab] = useState<string>('0');
+  const [activeTab, setactiveTab] = useState<boolean>(false);
+
+  useEffect(() => {
+    let butElem = document.querySelector('button')?.id;
+    if (butElem === '0') {
+      setactiveTab(true);
+    }
+  }, []);
+
+
   const handleMouseEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
     setclickTab(event.currentTarget.id);
   };
 
   return (
     <>
-      <div className='header-nav'>
+      <div role="tablist" aria-label="Sample Tabs" className='header-nav'>
         {headerNavElem.map((items, i) => {
           return (
             <Button variant={clickTab === `${i}` ? "primary" : "secondary"}
@@ -41,7 +50,7 @@ const HeaderItems: FC<HeaderElementsProps> = ({ headerNavElem, isActive, ...prop
         })}
       </div>
       <InfoOutPut myContacts={myContacts} myFoto={myFoto}
-        about={aboutMe} click={clickTab} />
+        about={aboutMe} click={clickTab} active={activeTab} />
     </>
   )
 }
