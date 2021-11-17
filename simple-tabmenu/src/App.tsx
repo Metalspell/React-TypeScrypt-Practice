@@ -9,8 +9,8 @@ function App() {
     { text: 'About me' },
     { text: 'My Foto' },
     { text: 'My contacts' },
-  ] 
-
+  ]
+  
   return (
     <div className="general-container">
       <HeaderItems headerNavElem={headerNavElem} />
