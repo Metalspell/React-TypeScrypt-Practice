@@ -10,7 +10,7 @@ function App() {
     { text: 'My Foto' },
     { text: 'My contacts' },
   ]
-  
+
   return (
     <div className="general-container">
       <HeaderItems headerNavElem={headerNavElem} />

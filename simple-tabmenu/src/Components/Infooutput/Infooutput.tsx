@@ -8,12 +8,12 @@ interface OutputProps {
   active?: boolean;
 }
 
-const InfoOutPut: FC<OutputProps> = ({ myContacts, click, active }) => {
+const InfoOutPut: FC<OutputProps> = ({ myContacts, click}) => {
   const [activeContent, setactiveContent] = useState<string | undefined>('');
 
   useEffect(() => {
     setactiveContent(click)
-  }, [click, active]);
+  }, [click]);
 
   return (
     <div className='output-wrapper'>
