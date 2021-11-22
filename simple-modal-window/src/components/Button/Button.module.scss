@@ -1,0 +1,27 @@
+.root {
+  padding: 0.5rem 1.5rem;
+}
+
+.primary {
+  background-color: rgb(41, 194, 130);
+  color           : white;
+  padding         : 2rem 8rem;
+  font-size       : 2vw;
+  cursor          : pointer;
+  border-radius   : 15px;
+  border-color    : rgb(41, 194, 130);
+}
+
+.secondary {
+  background-color: rgb(13, 92, 212);
+  color           : white;
+  padding         : 1rem 7rem;
+  border-radius   : 15px;
+  font-size       : 2vw;
+  margin-bottom   : 4rem;
+  cursor          : pointer;
+}
+
+.tertiary {
+  opacity: 0;
+}

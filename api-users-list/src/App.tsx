@@ -23,7 +23,6 @@ const App = () => {
     try {
       const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users');
       setApiUsers(response.data);
-      console.log(response.data)
     } catch (e) {
       alert('Holy shit! No data about users!');
     };
