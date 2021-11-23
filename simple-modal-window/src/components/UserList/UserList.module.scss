@@ -1,13 +1,14 @@
-.modal-window {
+.first,
+.second,
+.third {
   position       : absolute;
-  width          : 90%;
+  width          : 80%;
   display        : flex;
   justify-content: center;
   flex-direction : column;
   align-items    : center;
   border         : 1px solid black;
-  top            : 13rem;
-  opacity        : 0;
+  top            : 6rem;
   border-radius  : 3rem;
 }
 
@@ -18,9 +19,16 @@ ul {
   align-items   : center;
 }
 
-.modal-window ul li {
+h1 {
+  font-size: 3rem;
+  color    : white;
+}
+
+ul li {
   padding        : 1rem 0rem;
   list-style-type: none;
+  font-size      : 1.3rem;
+  color          : white;
 }
 
 .modal-window.active {
@@ -28,5 +36,17 @@ ul {
 }
 
 .inactive {
-  opacity: 0;
+  display: none;
+}
+
+.first {
+  background-color: rgb(21, 148, 99);
+}
+
+.second {
+  background-color: rgb(202, 11, 123);
+}
+
+.third {
+  background-color: rgb(202, 183, 11);
 }

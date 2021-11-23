@@ -17,9 +17,7 @@ const Button = ({
     [styles.tertiary]: variant === "tertiary",
   });
   
-  return <button type={type} {...props} className={cn} role="tab" />
+  return <button type={type} {...props} className={cn} />
 };
 
 export default Button;
-
-// className={click === false ? `${cn}` : "inactive"}

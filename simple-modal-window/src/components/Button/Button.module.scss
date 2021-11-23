@@ -16,12 +16,12 @@
   background-color: rgb(13, 92, 212);
   color           : white;
   padding         : 1rem 7rem;
-  border-radius   : 15px;
+  border-radius   : 40px;
   font-size       : 2vw;
-  margin-bottom   : 4rem;
+  margin          : 2rem 0rem 4rem 0rem;
   cursor          : pointer;
 }
 
 .tertiary {
-  opacity: 0;
+  display: none;
 }

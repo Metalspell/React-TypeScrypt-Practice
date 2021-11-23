@@ -40,7 +40,7 @@ const data = [
     "position": "Trainee JS dev"
   },
   {
-    "name": "Yuliia Rakytska",
+    "name": "Yuliia",
     "lastName": "Rakytska",
     "position": "Trainee JS dev"
   },
