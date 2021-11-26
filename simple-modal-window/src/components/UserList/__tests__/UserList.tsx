@@ -1,20 +1,20 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import UserList, {UserListProps} from '../UserList';
 import { Provider } from "react-redux";
-import store from './store/index';
+import store from '../../../store';
 
 
 describe("App", () => {
   beforeEach(() => {
     render(
       <Provider store={store}>
-        <App />
+        <UserList />
       </Provider>,
     );
   });
-
-  it('Did the button render fine?', ()=> {
-    expect(screen.getAllByRole('button')).toHaveLength(2);
+  
+  it('Did the modalwindow render fine?', ()=> {
+    expect(screen.getAllByRole('dialog')).toHaveLength(1);
   })
 })

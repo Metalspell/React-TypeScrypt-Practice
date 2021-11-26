@@ -8,31 +8,52 @@
   flex-direction : column;
   align-items    : center;
   border         : 1px solid black;
-  top            : 6rem;
+  top            : 6vh;
   border-radius  : 3rem;
 }
 
-.modal-window h1,
-ul {
+.bigtext,
+.mediumtext,
+.smalltext {
+  color: antiquewhite;
+}
+
+.bigtext {
+  font-size: 5rem;
+}
+
+.mediumtext {
+  font-size: 4rem;
+}
+
+.smalltext {
+  font-size: 3rem;
+}
+
+.ullist {
   display       : flex;
   flex-direction: column;
   align-items   : center;
 }
 
-h1 {
-  font-size: 3rem;
-  color    : white;
+.ullistcenter {
+  display       : flex;
+  flex-direction: column;
 }
 
-ul li {
+.smalluserinfo,
+.biguserinfo {
   padding        : 1rem 0rem;
   list-style-type: none;
-  font-size      : 1.3rem;
   color          : white;
 }
 
-.modal-window.active {
-  opacity: 1;
+.smalluserinfo {
+  font-size: 1.3rem;
+}
+
+.biguserinfo {
+  font-size: 2rem;
 }
 
 .inactive {

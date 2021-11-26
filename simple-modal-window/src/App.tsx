@@ -18,7 +18,7 @@ const App: React.FC = () => {
     <div className="general-wrapper">
       <Button variant={click === false ? 'primary' : "tertiary"}
         onClick={activateModal}>Show users list!</Button>
-      <UserList variant={click === true ? "first" : "inactive"} />
+      <UserList modalWrapperVariant={click === true ? "first" : "inactive"} />
     </div>
   );
 }
