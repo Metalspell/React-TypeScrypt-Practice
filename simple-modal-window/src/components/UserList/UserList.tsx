@@ -17,7 +17,7 @@ const UserList = ({
   modalWrapperVariant = "first",
   modalTitleVariant = "modal-title-medium-text",
   usersListVariant = 'users-list-centered',
-  eachUserVariant = 'each-user-big-text',
+  eachUserVariant = 'each-user-small-text',
 }: UserListProps) => {
 
   const { users } = useTypedSelector(state => state.user);
