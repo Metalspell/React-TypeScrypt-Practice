@@ -65,7 +65,7 @@ const UserList = ({
   console.log(users)
 
   return (
-    <div className={modalWrapper} role='dialog' aria-labelledby="dialog1Title" aria-describedby="dialog1Desc">
+    <div role='dialog' className={modalWrapper} aria-labelledby="modalTitle" aria-describedby="usersList">
       <h1 className={modalTitle}>TechMango team:</h1>
       <ul className={usersList}>
         {users.map((user, i) =>
@@ -73,7 +73,7 @@ const UserList = ({
             {user.lastName} - {user.position}</li>
         )}
       </ul>
-      <Button onClick={closeModal} variant={'secondary'}>
+      <Button onClick={closeModal} variant={'secondary'} aria-label="Close Dialog">
         Close modal window
       </Button>
     </div>
