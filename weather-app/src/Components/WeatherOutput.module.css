@@ -1,0 +1,53 @@
+.section {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 4vw;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.city_Date_TypeOfWeather {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cityAndDate {
+  display: flex;
+  flex-direction: column;
+}
+
+.title,
+.date {
+  margin: 0.5vw 0vw;
+}
+
+.title {
+  text-align: start;
+}
+
+.typeOfWeather {
+  display: flex;
+}
+
+.temperatureData {
+  display: flex;
+  align-items: flex-start;
+}
+
+.typeOfTemp {
+  display: flex;
+}
+
+.typeOfTemp div {
+  margin: 0vw 0.5vw;
+}
+
+.temperatureValue {
+  font-size: 3vw;
+  font-weight: bold;
+  margin: 0;
+}
