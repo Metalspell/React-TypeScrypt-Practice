@@ -2,12 +2,15 @@
   display: flex;
   justify-content: flex-start;
   margin-top: 4vw;
+  flex-wrap: wrap;
 }
 
 .item {
   display: flex;
   flex-direction: column;
-  width: 25%;
+  width: 30%;
+  border: 1px solid black;
+  margin: 0vw 3vw 2vw 0vw;
 }
 
 .city_Date_TypeOfWeather {
@@ -23,9 +26,6 @@
 .title,
 .date {
   margin: 0.5vw 0vw;
-}
-
-.title {
   text-align: start;
 }
 
@@ -40,6 +40,8 @@
 
 .typeOfTemp {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .typeOfTemp div {
@@ -50,4 +52,27 @@
   font-size: 3vw;
   font-weight: bold;
   margin: 0;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.mainData {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.anotherValues {
+  width: 30%;
+}
+
+.anotherValues div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fuck {
+  background-color: blue;
 }
