@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import './App.css';
 
 import { RootState } from './Redux-store';
-import Input from './Components/Input';
+import Input from './Components/Input/Input';
 import Alert from './Components/Alert';
-import WeatherOutput from './Components/WeatherOutput';
+import WeatherOutput from './Components/WeatherOutput/WeatherOutput';
 import { setAlert } from './Redux-store/Actions/alertActions';
 import { setError } from './Redux-store/Actions/weatherActions';
 import { useDispatch, useSelector } from 'react-redux';

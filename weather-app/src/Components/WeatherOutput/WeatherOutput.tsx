@@ -1,9 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
-import { WeatherData } from '../Redux-store/types';
+import { WeatherData } from '../../Redux-store/types';
 import style from './WeatherOutput.module.css';
 import { MdOutlineClose } from 'react-icons/md';
+import { RiCelsiusFill } from 'react-icons/ri';
+import { RiFahrenheitFill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
-import { setId } from '../Redux-store/Actions/weatherActions';
+import { setId } from '../../Redux-store/Actions/weatherActions';
 
 interface WeatherProps {
   data: WeatherData[];
@@ -15,14 +17,16 @@ type WeatherImage = {
 
 const WeatherOutput: FC<WeatherProps> = ({ data }) => {
   const dispatch = useDispatch();
-  const [temperatureState, setTemperatureState] = useState('');
+  const [temperatureState, setTemperatureState] = useState<string>('');
+  const [celsiusOrFahrengeit, setCelsiusOrFahrengeit] = useState<boolean>(true);
   const [img, setImage] = useState('');
+  let counters = [];
 
   const arrayOfWeatherImage: WeatherImage = {
-    'clear sky': 'https://cdn.pixabay.com/photo/2018/08/06/22/55/sun-3588618_960_720.jpg', 
+    'clear sky': 'https://cdn.pixabay.com/photo/2018/08/06/22/55/sun-3588618_960_720.jpg',
     'few clouds': 'https://c4.wallpaperflare.com/wallpaper/980/878/553/few-clouds-sky-wallpaper-preview.jpg',
-    'light rain': 'https://i.tribune.com.pk/media/images/698341-deadlyrain-1398055116/698341-deadlyrain-1398055116.jpg', 
-    'overcast clouds': 'https://img.freepik.com/free-photo/overcast-sky-dark-dramatic-gray-sky-and-white-clouds-before-rain-cloudy-and-moody-sky-storm-sky-cloudscape-gloomy-and-moody-background-overcast-clouds-background-for-sad-lonely-and-hopeless_33867-1987.jpg?w=2000',
+    'light rain': 'https://i.tribune.com.pk/media/images/698341-deadlyrain-1398055116/698341-deadlyrain-1398055116.jpg',
+    'overcast clouds': 'https://www.photos-public-domain.com/wp-content/uploads/2012/04/cloudy-overcast-sky.jpg',
     'scattered clouds': 'https://media.istockphoto.com/photos/cirrocumulus-clouds-cloudscape-picture-id645173476?b=1&k=20&m=645173476&s=170667a&w=0&h=0wdytj1LA3mA1Jzp0j6_rgip60BxH9e5BAAE_vFlJQE=',
     'broken clouds': 'https://live.staticflickr.com/4892/44794073965_2b17a620ca_b.jpg',
     'shower rain': 'https://s7d2.scene7.com/is/image/TWCNews/rain_jpg-28',
@@ -46,12 +50,6 @@ const WeatherOutput: FC<WeatherProps> = ({ data }) => {
     dispatch(setId(+e.currentTarget.id));
   }
 
-  // // document.addEventListener("click", function (e: Event) {
-  // //   if ((e.target as Element).classList.contains('celsius')) {
-  // //     (e.target as Element).classList.add('.active');
-  // //   }
-  // // });
-
   useEffect(() => {
     if (data.length !== 0) {
       for (let i = 0; i < data.length; i++) {
@@ -65,36 +63,46 @@ const WeatherOutput: FC<WeatherProps> = ({ data }) => {
     }
   }, [data, img]);
 
+  const temperatureSelector = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setTemperatureState(e.currentTarget.id);
+  }
+
   return (
     <>
-      <section>
-        <div className={style.typeOfTemp}>
-          <h1>Select the temperature display type:</h1>
-          <div
-            className={style.celsius}
-            onClick={() => setTemperatureState((data[0].main.temp - 273.15).toFixed(2))}
-          >
-            <span>
-              &#8451;
-            </span>
+      {data.length > 0 ?
+        <section>
+          <div className={style.typeOfTemp}>
+            <h1>Select the temperature display type:</h1>
+            <div
+              id={'celsius'}
+              className={style.celsius}
+              onClick={temperatureSelector}
+            >
+              <span>
+                &#8451;
+              </span>
+            </div>
+            |
+            <div
+              id={'fahrenheit'}
+              className={style.fahrenheit}
+              onClick={temperatureSelector}
+            >
+              <span>
+                &#8457;
+              </span>
+            </div>
           </div>
-          |
-          <div
-            className={style.fahrenheit}
-            onClick={() => setTemperatureState((data[0].main.temp * 1.8 - 459.67).toFixed(2))}
-          >
-            <span>
-              &#8457;
-            </span>
-          </div>
-        </div>
-      </section>
+        </section>
+        : null}
       <section className={style.section}>
         {data.map((item, i) => {
+          counters.push(i);
           return (
             <div key={i}
               className={style.item}
-              style={{ background: `url(${item.weather[0].linkToWeatherImage}) no-repeat`}}
+              style={{ background: `url(${item.weather[0].linkToWeatherImage}) no-repeat center center / cover` }}
             >
               <div className={style.city_Date_TypeOfWeather}>
                 <div className={style.cityAndDate}>
@@ -102,11 +110,13 @@ const WeatherOutput: FC<WeatherProps> = ({ data }) => {
                   <h3 className={style.date}>{`${days[date.getDay()]}, ${dateOfMonth} ${month[date.getMonth()]}, 
               ${date.getHours()}:${(date.getMinutes() < 10 ? '0' : '') + date.getMinutes()}`}</h3>
                 </div>
-                <div className={style.typeOfWeather}>
-                  <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt="" />
-                  <p className="heading">{item.weather[0].description}</p>
+                <div className={style.typeOfWeatherWrapper}>
+                  <div className={style.typeOfWeather}>
+                    <img src={`http://openweathermap.org/img/wn/${item.weather[0].icon}.png`} alt="" />
+                    <p className="heading">{item.weather[0].description}</p>
+                  </div>
+                  <MdOutlineClose id={`${i}`} onClick={submitHandler} size='2vw' cursor='pointer' />
                 </div>
-                <MdOutlineClose id={`${i}`} onClick={submitHandler} size='2vw' />
               </div>
               <div className={style.mainData}>
                 <div className="temperature">
@@ -114,8 +124,15 @@ const WeatherOutput: FC<WeatherProps> = ({ data }) => {
                     <div className={style.temperatureData}>
                       <p className={style.temperatureValue}>
                         {+(item.main.temp - 273.15).toFixed(2) > 0 || +(item.main.temp * 1.8 - 459.67).toFixed(2) > 0 ? '+' : '-'}
-                        {temperatureState === '' ? `${(item.main.temp - 273.15).toFixed(2)}` : `${temperatureState}`}
+                        {temperatureState === '' ? `${(data[i].main.temp - 273.15).toFixed(2)}` :
+                          temperatureState === 'celsius' ? `${(data[i].main.temp - 273.15).toFixed(2)}` : `${(item.main.temp * 1.8 - 459.67).toFixed(2)}`}
                       </p>
+                      {celsiusOrFahrengeit
+                        ?
+                        <RiCelsiusFill size='2vw' />
+                        :
+                        <RiFahrenheitFill size='2vw' />
+                      }
                     </div>
                   </div>
                 </div>

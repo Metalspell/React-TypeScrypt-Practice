@@ -1,9 +1,9 @@
 import React, { FC, useState, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { InputProps } from '../Redux-store/types';
-
-import { setAlert } from '../Redux-store/Actions/alertActions';
-import { getWeather, setLoading } from '../Redux-store/Actions/weatherActions';
+import { InputProps } from '../../Redux-store/types';
+import style from  './Input.module.css';
+import { setAlert } from '../../Redux-store/Actions/alertActions';
+import { getWeather, setLoading } from '../../Redux-store/Actions/weatherActions';
 
 const Input: FC<InputProps> = ({ title }) => {
   const dispatch = useDispatch();
@@ -27,17 +27,17 @@ const Input: FC<InputProps> = ({ title }) => {
     <div className="hero is-light has-text-centered">
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">{title}</h1>
-          <form className="py-5" onSubmit={submitHandler}>
+          <h1 className={style.tytle}>{title}</h1>
+          <form className={style.form} onSubmit={submitHandler}>
             <input
               type="text"
-              className="input has-text-centered mb-2"
+              className={style.formField}
               placeholder="Enter city name"
-              style={{ maxWidth: 300 }}
+              spellCheck="false"
               value={city}
               onChange={changeHandler}
             />
-            <button className="button is-primary is-fullwidth" style={{ maxWidth: 300, margin: '0 auto' }}>Search</button>
+            <button className={style.button}>Search</button>
           </form>
         </div>
       </div>

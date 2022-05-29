@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Briem Script STD';
+  src: url('../../Fonts/Briem/BriemScriptStd-Bold.otf');
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../Fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
 .section {
   display: flex;
   justify-content: flex-start;
@@ -11,6 +21,7 @@
   width: 30%;
   border: 1px solid black;
   margin: 0vw 3vw 2vw 0vw;
+  background: cover !important;
 }
 
 .city_Date_TypeOfWeather {
@@ -29,8 +40,20 @@
   text-align: start;
 }
 
+.typeOfWeatherWrapper {
+  display: flex;
+  width: 45%;
+  justify-content: space-between;
+}
+
 .typeOfWeather {
   display: flex;
+  align-items: center;
+}
+
+.typeOfWeather img {
+  width: 6vw;
+  height: 6vw;
 }
 
 .temperatureData {
@@ -42,6 +65,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #ffffff;
+}
+
+.typeOfTemp h1,
+.typeOfTemp span {
+  color: #ffffff;
+  font-family: 'Inter';
+  font-size: 1vw;
+}
+
+.celsius,
+.fahrenheit {
+  cursor: pointer;
 }
 
 .typeOfTemp div {
