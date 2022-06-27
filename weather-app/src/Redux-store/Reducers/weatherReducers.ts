@@ -1,6 +1,6 @@
 
 
-import { WeatherState, WeatherAction, GET_WEATHER, SET_LOADING, SET_ERROR, DELETE_WEATHER } from "../types";
+import { WeatherState, WeatherAction, GET_WEATHER, SET_LOADING, SET_ERROR, DELETE_WEATHER, TOTAL_DELETE_WEATHER } from "../types";
 
 const initialState: WeatherState = {
   data: [],
@@ -25,6 +25,13 @@ export default (state = initialState, action: WeatherAction): WeatherState => {
         data: [
           ...state.data.slice(0, action.payload),
           ...state.data.slice(action.payload + 1)
+        ],
+      }
+    case TOTAL_DELETE_WEATHER:
+      return {
+        ...state,
+        data: [
+          ...state.data.splice(0, action.payload),
         ],
       }
     case SET_LOADING:

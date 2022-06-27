@@ -38,6 +38,7 @@
   font-size: 1vw;
   color: #ffffff;
   font-family: 'Inter';
+  margin-top: 1vw;
 }
 
 .button:hover {
@@ -48,4 +49,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .mainContainer {
+    padding: 5vw 8vw;
+  }
+
+  .tytle {
+    font-size: 4vw;
+    line-height: 6vw;
+  }
+
+  .formField {
+    margin: 3vw 0vw 4vw 0vw;
+    width: 80%;
+    font-size: 3vw;
+  }
+
+  .button {
+    width: 25vw;
+    height: 6vw;
+    font-size: 2vw;
+    margin-top: 2vw;
+    border-radius: 1.5vw !important;
+  }
 }

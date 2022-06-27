@@ -3,10 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import weatherReducer from './Reducers/weatherReducers';
 import alertReducer from './Reducers/alertReducer';
+import listOfCitiesReducer from './Reducers/listOfCitiesReducer';
 
 const rootReducer = combineReducers({
   weather: weatherReducer,
-  alert: alertReducer
+  alert: alertReducer,
+  cityList: listOfCitiesReducer
 });
 
 const store = createStore(
