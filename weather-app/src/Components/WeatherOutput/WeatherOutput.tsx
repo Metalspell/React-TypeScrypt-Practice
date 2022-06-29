@@ -70,6 +70,15 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
     setTemperatureState(e.currentTarget.id);
   }
 
+  const fahrenheitOrCelsius = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCelsiusOrFahrengeit(false);
+  }
+  const celsiusOrFahrenheit = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCelsiusOrFahrengeit(true);
+  }
+
   return (
     <>
       {data.length > 0 ?
@@ -79,7 +88,7 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
             <div
               id={'celsius'}
               className={style.celsius}
-              onClick={temperatureSelector}
+              onClick={(e) => {temperatureSelector(e); celsiusOrFahrenheit(e);}}
             >
               <span>
                 &#8451;
@@ -89,7 +98,7 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
             <div
               id={'fahrenheit'}
               className={style.fahrenheit}
-              onClick={temperatureSelector}
+              onClick={(e) => {temperatureSelector(e); fahrenheitOrCelsius(e);}}
             >
               <span>
                 &#8457;
