@@ -51,6 +51,13 @@
   align-items: center;
 }
 
+.buttonsWrapper {
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
 @media (max-width: 1024px) {
   .mainContainer {
     padding: 5vw 8vw;

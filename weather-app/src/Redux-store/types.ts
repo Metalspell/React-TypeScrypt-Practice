@@ -61,6 +61,7 @@ export interface InputProps {
   title: string;
   cityData: CityData[];
   error: string;
+  weatherData: WeatherData[];
 }
 
 export interface AlertProps {

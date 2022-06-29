@@ -22,7 +22,7 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <Input error={error} cityData={cityData} title="Enter city name and press search button or use or use automatic location detection" />
+      <Input error={error} cityData={cityData} weatherData={weatherData} title="Enter city name and press search button or use automatic location detection" />
       {loading ? <h2 className="loading">Loading...</h2> : weatherData && <WeatherOutput data={weatherData} city={cityData} />}
 
       {alertMsg &&

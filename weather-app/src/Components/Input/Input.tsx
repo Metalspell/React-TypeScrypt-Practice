@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent } from 'react';
+import React, { FC, useState, FormEvent, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { InputProps } from '../../Redux-store/types';
 import style from './Input.module.css';
@@ -6,11 +6,12 @@ import { setAlert } from '../../Redux-store/Actions/alertActions';
 import { getWeather, setLoading, clearWeatherArray } from '../../Redux-store/Actions/weatherActions';
 import { getCity } from '../../Redux-store/Actions/listOfCitiesActions';
 
-const Input: FC<InputProps> = ({ title, cityData, error }) => {
+const Input: FC<InputProps> = ({ title, cityData, error, weatherData }) => {
   const dispatch = useDispatch();
   const [city, setCity] = useState('');
+  const [cityFromPresentLocation, setCityFromPresentLocation] = useState<any | null>(null);
 
-  const changeHandler = (e: FormEvent<HTMLInputElement>) => {
+  const formInput = (e: FormEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value);
   }
 
@@ -20,6 +21,12 @@ const Input: FC<InputProps> = ({ title, cityData, error }) => {
       dispatch(getWeather(`q=${cityData[i].city}`));
     }
   }
+
+  useEffect(() => {
+    if (cityFromPresentLocation && weatherData.length !== 0) {
+      dispatch(getCity(weatherData[weatherData.length - 1].name));
+    }
+  }, [weatherData, cityFromPresentLocation, dispatch]);
 
   const myLocation = () => {
     navigator.geolocation
@@ -33,6 +40,7 @@ const Input: FC<InputProps> = ({ title, cityData, error }) => {
       const long = positions.coords.longitude;
       dispatch(getWeather(`lat=${lat}&lon=${long}`));
     }
+    setCityFromPresentLocation(true)
   }
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
@@ -46,6 +54,7 @@ const Input: FC<InputProps> = ({ title, cityData, error }) => {
       dispatch(getCity(city));
     }
     setCity('');
+    setCityFromPresentLocation(false)
   }
 
   return (
@@ -58,11 +67,11 @@ const Input: FC<InputProps> = ({ title, cityData, error }) => {
           placeholder="Enter city name"
           spellCheck="false"
           value={city}
-          onChange={changeHandler}
+          onChange={formInput}
         />
         <button className={style.button}>Search</button>
       </form>
-      <div>
+      <div className={style.buttonsWrapper}>
         <button className={style.button} onClick={myLocation}>My present location</button>
         <button className={style.button} onClick={RefreshData}>Refresh info</button>
       </div>
