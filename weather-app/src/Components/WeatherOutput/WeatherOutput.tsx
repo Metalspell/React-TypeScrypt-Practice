@@ -1,23 +1,21 @@
 import React, { FC, useEffect, useState } from 'react';
-import { WeatherData, CityData } from '../../Redux-store/types';
+import { WeatherData } from '../../Redux-store/types';
 import style from './WeatherOutput.module.css';
 import { MdOutlineClose } from 'react-icons/md';
 import { RiCelsiusFill } from 'react-icons/ri';
 import { RiFahrenheitFill } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { setId } from '../../Redux-store/Actions/weatherActions';
-import { deleteCity } from '../../Redux-store/Actions/listOfCitiesActions';
 
 interface WeatherProps {
   data: WeatherData[];
-  city: CityData[];
 }
 
 type WeatherImage = {
   [key: string]: string;
 };
 
-const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
+const WeatherOutput: FC<WeatherProps> = ({ data }) => {
   const dispatch = useDispatch();
   const [temperatureState, setTemperatureState] = useState<string>('');
   const [celsiusOrFahrengeit, setCelsiusOrFahrengeit] = useState<boolean>(true);
@@ -34,8 +32,8 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
 
   const submitHandler = (e: React.MouseEvent<SVGAElement>) => {
     e.preventDefault();
+    console.log(+e.currentTarget.id)
     dispatch(setId(+e.currentTarget.id));
-    dispatch(deleteCity(+e.currentTarget.id));
   }
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
         }
       }
     }
-  }, [data, img, city]);
+  }, [data, img]);
 
   const temperatureSelector = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -88,7 +86,7 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
             <div
               id={'celsius'}
               className={style.celsius}
-              onClick={(e) => {temperatureSelector(e); celsiusOrFahrenheit(e);}}
+              onClick={(e) => { temperatureSelector(e); celsiusOrFahrenheit(e); }}
             >
               <span>
                 &#8451;
@@ -98,7 +96,7 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
             <div
               id={'fahrenheit'}
               className={style.fahrenheit}
-              onClick={(e) => {temperatureSelector(e); fahrenheitOrCelsius(e);}}
+              onClick={(e) => { temperatureSelector(e); fahrenheitOrCelsius(e); }}
             >
               <span>
                 &#8457;
@@ -130,40 +128,51 @@ const WeatherOutput: FC<WeatherProps> = ({ data, city }) => {
                 </div>
               </div>
               <div className={style.mainData}>
-                <div className="temperature">
+                <div className={style.temperatureData}>
                   <div>
-                    <div className={style.temperatureData}>
-                      <p className={style.temperatureValue}>
-                        {+(item.main.temp - 273.15).toFixed(2) > 0 || +(item.main.temp * 1.8 - 459.67).toFixed(2) > 0 ? '+' : '-'}
-                        {temperatureState === '' ? `${(data[i].main.temp - 273.15).toFixed(2)}` :
-                          temperatureState === 'celsius' ? `${(data[i].main.temp - 273.15).toFixed(2)}` : `${(item.main.temp * 1.8 - 459.67).toFixed(2)}`}
-                      </p>
-                      {celsiusOrFahrengeit
-                        ?
-                        <RiCelsiusFill className={style.temperatureTypeIcon} />
-                        :
-                        <RiFahrenheitFill className={style.temperatureTypeIcon} />
-                      }
-                    </div>
+                    <p className={style.temperatureValue}>
+                      {+(item.main.temp - 273.15).toFixed(0) > 0 || +(item.main.temp * 1.8 - 459.67).toFixed(0) > 0 ? '+' : '-'}
+                      {temperatureState === '' ? `${(data[i].main.temp - 273.15).toFixed(0)}` :
+                        temperatureState === 'celsius' ? `${(data[i].main.temp - 273.15).toFixed(0)}` : `${(item.main.temp * 1.8 - 459.67).toFixed(0)}`}
+                    </p>
+                    {celsiusOrFahrengeit
+                      ?
+                      <RiCelsiusFill className={style.temperatureTypeIcon} />
+                      :
+                      <RiFahrenheitFill className={style.temperatureTypeIcon} />
+                    }
+                  </div>
+                  <div>
+                    <p className={style.temperatureFeelsLike}>Feels like:&nbsp;&nbsp;&nbsp;
+                      {+(item.main.feels_like - 273.15).toFixed(0) > 0 || +(item.main.feels_like * 1.8 - 459.67).toFixed(0) > 0 ? '+' : '-'}
+                      {temperatureState === '' ? `${(data[i].main.feels_like - 273.15).toFixed(0)}` :
+                        temperatureState === 'celsius' ? `${(data[i].main.feels_like - 273.15).toFixed(0)}` : `${(item.main.feels_like * 1.8 - 459.67).toFixed(0)}`}
+                    </p>
+                    {celsiusOrFahrengeit
+                      ?
+                      <RiCelsiusFill className={style.temperatureTypeIconFeel} />
+                      :
+                      <RiFahrenheitFill className={style.temperatureTypeIconFeel} />
+                    }
                   </div>
                 </div>
                 <div className={style.anotherValues}>
                   <div className="level-item">
                     <div>
                       <p className={style.heading}>Humidity: </p>
-                      <p className="title">{item.main.humidity}</p>
+                      <p className="title">{item.main.humidity}%</p>
                     </div>
                   </div>
                   <div className="level-item">
                     <div>
                       <p className={style.heading}>Pressure: </p>
-                      <p className="title">{item.main.pressure}</p>
+                      <p className="title">{item.main.pressure}hPa</p>
                     </div>
                   </div>
                   <div className="level-item">
                     <div>
                       <p className={style.heading}>Wind: </p>
-                      <p className="title">{item.wind.speed} m/s</p>
+                      <p className="title">{item.wind.speed}m/s</p>
                     </div>
                   </div>
                 </div>
