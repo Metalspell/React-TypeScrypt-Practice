@@ -1,10 +1,12 @@
 import React from 'react';
+import { AnswerObject } from '../../App';
+import style from './Card.module.css';
 
 type Props = {
   question: string;
   answers: string[];
   callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  userAnswer: any;
+  userAnswer: AnswerObject | undefined;
   questionNumber: number;
   totalQuestions: number;
 }
@@ -18,8 +20,8 @@ const Card: React.FC<Props> = ({
   totalQuestions,
 }) => {
   return (
-    <section>
-      <p className='number'>
+    <section className={style.cardWrapper}>
+      <p className={style.questionNumber}>
         Question: {questionNumber} / {totalQuestions}
       </p>
       <p dangerouslySetInnerHTML={{ __html: question }} />
@@ -31,6 +33,13 @@ const Card: React.FC<Props> = ({
               disabled={userAnswer ? true : false}
               value={answer}
               onClick={callback}
+              className={style.answerButton}
+              style={userAnswer?.answer === answer ?
+                {
+                  background: `linear-gradient(90deg, #56FFA4, #59BC86)`,
+                }
+                :
+                { background: `linear-gradient(90deg, #FF5656, #C16868)` }}
             >
               <span dangerouslySetInnerHTML={{ __html: answer }} />
             </button>

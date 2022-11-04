@@ -1,0 +1,41 @@
+.generalWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.generalTitle,
+.score {
+  font-family: Fascinate Inline;
+  background-image: linear-gradient(180deg, #fff, #a0cd3f);
+  font-weight: 400;
+  background-size: 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px #0085a3);
+  text-align: center;
+  margin: 1vw;
+}
+
+.score {
+  font-size: 2vw;
+}
+
+.generalTitle {
+  font-size: 6vw;
+}
+
+.startButton,
+.nextQuestionButton {
+  cursor: pointer;
+  background: linear-gradient(180deg, #ffffff, #a0cd3f);
+  border: 2px solid #0085a3;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  height: 40px;
+  margin: 20px 0;
+  padding: 0 40px;
+}

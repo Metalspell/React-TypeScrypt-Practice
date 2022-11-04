@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import './App.css';
-import Card from './components/Card';
+import React, { useState, useEffect } from 'react';
+import Card from './components/quesion`s_card/Card';
 import { fetchQuizQuestions } from './API';
 import { QuestionState, Difficulty } from './API';
+import style from './App.module.css'
+import SelectCard from './components/select_category_card/SelectCard';
+import { categorySelect, Category } from './API';
 
-const TOTAL_QUESTIONS = 10;
-
-export type AnwerObject = {
+export type AnswerObject = {
   question: string;
   answer: string;
   correct: boolean;
@@ -17,16 +17,25 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
-  const [userAnswers, setUserAnswers] = useState<AnwerObject[]>([]);
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
+  const [selectParams, setSelectParams] = useState<boolean>(false);
+  const [amountOfQuestions, setAmountOfQuestions] = useState<number>(1);
+  const [difficulty, setDifficulty] = useState<string>(Difficulty.EASY);
+  const [category, setCategory] = useState<Category[]>([]);
+
   const startTrivia = async () => {
+
+    const categoryArray = await categorySelect();
+    setCategory(categoryArray)
+
     setLoading(true)
     setGameOver(false);
 
     const newQuestions = await fetchQuizQuestions(
-      TOTAL_QUESTIONS,
+      amountOfQuestions,
       Difficulty.EASY
     );
 
@@ -56,7 +65,7 @@ function App() {
 
   const nextQuestion = () => {
     const nextQuestion = number + 1;
-    if (nextQuestion === TOTAL_QUESTIONS) {
+    if (nextQuestion === amountOfQuestions) {
       setGameOver(true);
     } else {
       setNumber(nextQuestion);
@@ -64,43 +73,50 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Quiz</h1>
-        {gameOver || userAnswers.length === TOTAL_QUESTIONS ?
-          <button
-            className='start'
-            onClick={startTrivia}
-          >
-            Start quiz
-          </button>
-          :
-          null
-        }
-        {!gameOver ? <p className='score'>Score:</p> : null}
-        {loading ? <p>Loading Questions ...</p> : null}
-        {!loading && !gameOver && (
-          <Card
-            questionNumber={number + 1}
-            totalQuestions={TOTAL_QUESTIONS}
-            question={questions[number].question}
-            answers={questions[number].answers}
-            userAnswer={userAnswers ? userAnswers[number] : undefined}
-            callback={checkAnswer}
-          />
-        )}
-        {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS - 1 ?
-          <button
-            className='next-question'
-            onClick={nextQuestion}
-          >
-            Next Question
-          </button>
-          :
-          null
-        }
-      </header>
-    </div>
+    <section className={style.generalWrapper}>
+      <h1 className={style.generalTitle}>Quiz</h1>
+      {gameOver || userAnswers.length === amountOfQuestions ?
+        <button
+          className={style.startButton}
+          onClick={startTrivia}
+        >
+          Start quiz
+        </button>
+        :
+        null
+      }
+      {!gameOver ? <p className={style.score}>Score: {score}</p> : null}
+      {loading ? <p>Loading Questions ...</p> : null}
+      {!loading && !gameOver && selectParams ?
+        <Card
+          questionNumber={number + 1}
+          totalQuestions={amountOfQuestions}
+          question={questions[number].question}
+          answers={questions[number].answers}
+          userAnswer={userAnswers ? userAnswers[number] : undefined}
+          callback={checkAnswer}
+        />
+        :
+        null
+      }
+      <SelectCard
+        setAmountOfQuestions={setAmountOfQuestions}
+        amountOfQuestions={amountOfQuestions}
+        setDifficulty={setDifficulty}
+        difficulty={difficulty}
+        category={category}
+      />
+      {!gameOver && !loading && userAnswers.length === number + 1 && number !== amountOfQuestions - 1 ?
+        <button
+          onClick={nextQuestion}
+          className={style.nextQuestionButton}
+        >
+          Next Question
+        </button>
+        :
+        null
+      }
+    </section>
   );
 }
 
