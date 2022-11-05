@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from './components/quesion`s_card/Card';
 import { fetchQuizQuestions } from './API';
-import { QuestionState, Difficulty } from './API';
+import { QuestionState } from './API';
 import style from './App.module.css'
 import SelectCard from './components/select_category_card/SelectCard';
 import { categorySelect, Category } from './API';
@@ -15,28 +15,38 @@ export type AnswerObject = {
 
 function App() {
   const [loading, setLoading] = useState(false);
+  const [loadingListOfParams, setLoadingListOfParams] = useState(false);
+  const [defaultParams, setDefaultParams] = useState(true);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
 
-  const [selectParams, setSelectParams] = useState<boolean>(false);
   const [amountOfQuestions, setAmountOfQuestions] = useState<number>(1);
-  const [difficulty, setDifficulty] = useState<string>(Difficulty.EASY);
+  const [difficulty, setDifficulty] = useState<string>('easy');
   const [category, setCategory] = useState<Category[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<number>(0);
 
-  const startTrivia = async () => {
-
+  const selectTriviaParams = async () => {
+    setGameOver(true);
+    setLoadingListOfParams(true);
     const categoryArray = await categorySelect();
     setCategory(categoryArray)
+    setLoadingListOfParams(false);
+    setDefaultParams(false);
+  }
+
+  const startTrivia = async () => {
+    setDefaultParams(true);
 
     setLoading(true)
     setGameOver(false);
 
     const newQuestions = await fetchQuizQuestions(
       amountOfQuestions,
-      Difficulty.EASY
+      difficulty,
+      selectedCategory,
     );
 
     setQuestions(newQuestions);
@@ -75,6 +85,12 @@ function App() {
   return (
     <section className={style.generalWrapper}>
       <h1 className={style.generalTitle}>Quiz</h1>
+      <button
+        className={style.startButton}
+        onClick={selectTriviaParams}
+      >
+        Parameters of quiz
+      </button>
       {gameOver || userAnswers.length === amountOfQuestions ?
         <button
           className={style.startButton}
@@ -87,7 +103,13 @@ function App() {
       }
       {!gameOver ? <p className={style.score}>Score: {score}</p> : null}
       {loading ? <p>Loading Questions ...</p> : null}
-      {!loading && !gameOver && selectParams ?
+      {defaultParams && loading ?
+        <p>Quiz started with default parameters</p>
+        :
+        null
+      }
+      {loadingListOfParams ? <p>Loading parameters of quiz ...</p> : null}
+      {!loading && !gameOver && defaultParams ?
         <Card
           questionNumber={number + 1}
           totalQuestions={amountOfQuestions}
@@ -99,13 +121,18 @@ function App() {
         :
         null
       }
-      <SelectCard
-        setAmountOfQuestions={setAmountOfQuestions}
-        amountOfQuestions={amountOfQuestions}
-        setDifficulty={setDifficulty}
-        difficulty={difficulty}
-        category={category}
-      />
+      {!loadingListOfParams && !defaultParams ?
+        <SelectCard
+          setAmountOfQuestions={setAmountOfQuestions}
+          amountOfQuestions={amountOfQuestions}
+          setDifficulty={setDifficulty}
+          difficulty={difficulty}
+          category={category}
+          setSelectedCategory={setSelectedCategory}
+        />
+        :
+        null
+      }
       {!gameOver && !loading && userAnswers.length === number + 1 && number !== amountOfQuestions - 1 ?
         <button
           onClick={nextQuestion}

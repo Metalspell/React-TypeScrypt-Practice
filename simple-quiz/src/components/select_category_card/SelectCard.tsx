@@ -1,12 +1,13 @@
 import style from './SelectCard.module.css';
-import { categorySelect, Category } from '../../API';
+import { Category } from '../../API';
 
 type Props = {
   setAmountOfQuestions: (value: number) => void;
   amountOfQuestions: number;
   setDifficulty: (value: string) => void;
   difficulty: string;
-  category: Category[]
+  category: Category[];
+  setSelectedCategory: (value: number) => void;
 }
 
 const SelectCard: React.FC<Props> = ({
@@ -15,6 +16,7 @@ const SelectCard: React.FC<Props> = ({
   setDifficulty,
   difficulty,
   category,
+  setSelectedCategory,
 }) => {
 
   const amountHandler = (e: any) => {
@@ -26,7 +28,7 @@ const SelectCard: React.FC<Props> = ({
   }
 
   const categoryHandler = (e: any) => {
-    setDifficulty(e.target.value);
+    setSelectedCategory(+e.target.value);
   }
 
   return (
@@ -49,27 +51,20 @@ const SelectCard: React.FC<Props> = ({
         value={difficulty}
         onChange={difficultyHandler}
       >
-        <option value="Difficulty.EASY">Easy</option>
-        <option value="Difficulty.MEDIUM">Medium</option>
-        <option value="Difficulty.HARD">Hard</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
       </select>
-
       <label htmlFor="category"> Select difficulty </label>
-      {category !== undefined ?
-        <select
-          name="selectCategory"
-          id={style['category']}
-          value={difficulty}
-          onChange={categoryHandler}
-        >
-          {category.map(item => (
-            <option key={item.id} value={item.name}>{item.name}</option>
-          ))}
-        </select>
-        :
-        null
-      }
-
+      <select
+        name="selectCategory"
+        id={style['category']}
+        onChange={categoryHandler}
+      >
+        {category.map(item => (
+          <option key={item.id} value={item.id}>{item.name}</option>
+        ))}
+      </select>
     </section>
   );
 }
