@@ -16,7 +16,9 @@ export type AnswerObject = {
 function App() {
   const [loading, setLoading] = useState(false);
   const [loadingListOfParams, setLoadingListOfParams] = useState(false);
-  const [defaultParams, setDefaultParams] = useState(true);
+  const [visibilityOfSelectWindow, setVisibilityOfSelectWindow] = useState(true);
+  const [defaultQuizParams, setDefaultQuizParams] = useState(true);
+
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
@@ -27,6 +29,8 @@ function App() {
   const [difficulty, setDifficulty] = useState<string>('easy');
   const [category, setCategory] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<number>(0);
+  const [quizType, setQuizType] = useState<string>("")
+
 
   const selectTriviaParams = async () => {
     setGameOver(true);
@@ -34,12 +38,11 @@ function App() {
     const categoryArray = await categorySelect();
     setCategory(categoryArray)
     setLoadingListOfParams(false);
-    setDefaultParams(false);
+    setVisibilityOfSelectWindow(false);
   }
 
   const startTrivia = async () => {
-    setDefaultParams(true);
-
+    setVisibilityOfSelectWindow(true);
     setLoading(true)
     setGameOver(false);
 
@@ -47,6 +50,7 @@ function App() {
       amountOfQuestions,
       difficulty,
       selectedCategory,
+      quizType,
     );
 
     setQuestions(newQuestions);
@@ -102,14 +106,20 @@ function App() {
         null
       }
       {!gameOver ? <p className={style.score}>Score: {score}</p> : null}
-      {loading ? <p>Loading Questions ...</p> : null}
-      {defaultParams && loading ?
-        <p>Quiz started with default parameters</p>
+      {loading ? <p className={style.downloadIndo}>Loading questions, please wait</p> : null}
+      {defaultQuizParams && loading ?
+        <p className={style.downloadIndo}>Quiz started with default parameters</p>
         :
         null
       }
-      {loadingListOfParams ? <p>Loading parameters of quiz ...</p> : null}
-      {!loading && !gameOver && defaultParams ?
+      {loadingListOfParams ?
+        <p className={style.downloadIndo}>
+          Loading parameters of quiz ...
+        </p>
+        :
+        null
+      }
+      {!loading && !gameOver && visibilityOfSelectWindow ?
         <Card
           questionNumber={number + 1}
           totalQuestions={amountOfQuestions}
@@ -121,7 +131,7 @@ function App() {
         :
         null
       }
-      {!loadingListOfParams && !defaultParams ?
+      {!loadingListOfParams && !visibilityOfSelectWindow ?
         <SelectCard
           setAmountOfQuestions={setAmountOfQuestions}
           amountOfQuestions={amountOfQuestions}
@@ -129,6 +139,8 @@ function App() {
           difficulty={difficulty}
           category={category}
           setSelectedCategory={setSelectedCategory}
+          setDefaultQuizParams={setDefaultQuizParams}
+          setQuizType={setQuizType}
         />
         :
         null

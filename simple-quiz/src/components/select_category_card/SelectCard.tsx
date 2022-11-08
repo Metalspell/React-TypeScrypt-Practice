@@ -8,6 +8,8 @@ type Props = {
   difficulty: string;
   category: Category[];
   setSelectedCategory: (value: number) => void;
+  setDefaultQuizParams: (value: boolean) => void;
+  setQuizType: (value: string) => void;
 }
 
 const SelectCard: React.FC<Props> = ({
@@ -17,18 +19,28 @@ const SelectCard: React.FC<Props> = ({
   difficulty,
   category,
   setSelectedCategory,
+  setDefaultQuizParams,
+  setQuizType,
 }) => {
 
   const amountHandler = (e: any) => {
     setAmountOfQuestions(+e.target.value)
+    setDefaultQuizParams(false);
   }
 
   const difficultyHandler = (e: any) => {
     setDifficulty(e.target.value);
+    setDefaultQuizParams(false);
   }
 
   const categoryHandler = (e: any) => {
     setSelectedCategory(+e.target.value);
+    setDefaultQuizParams(false);
+  }
+
+  const typeHandler = (e: any) => {
+    setQuizType(e.target.value);
+    setDefaultQuizParams(false);
   }
 
   return (
@@ -55,6 +67,7 @@ const SelectCard: React.FC<Props> = ({
         <option value="medium">Medium</option>
         <option value="hard">Hard</option>
       </select>
+
       <label htmlFor="category"> Select difficulty </label>
       <select
         name="selectCategory"
@@ -64,6 +77,17 @@ const SelectCard: React.FC<Props> = ({
         {category.map(item => (
           <option key={item.id} value={item.id}>{item.name}</option>
         ))}
+      </select>
+
+      <label htmlFor="type"> Select type </label>
+      <select
+        name="selectDificulty"
+        id={style['type']}
+        onChange={typeHandler}
+      >
+        <option value="">Any type</option>
+        <option value="multiple">Multiple choice</option>
+        <option value="boolean">True / False</option>
       </select>
     </section>
   );

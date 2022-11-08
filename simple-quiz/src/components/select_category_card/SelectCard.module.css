@@ -13,6 +13,7 @@
 
 #amountOfQuestions,
 #difficulty,
-#category {
+#category,
+#type {
   text-align: center;
 }
