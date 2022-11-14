@@ -5,7 +5,9 @@ export const Wrapper = styled.div`
   margin: 40px;
 `;
 
-export const SryledButton = styled(IconButton)`
+export const StyledButton = styled(IconButton)`
   position: fixed;
   z-index: 100;
+  rigth: 20px;
+  top: 20px;
 `;

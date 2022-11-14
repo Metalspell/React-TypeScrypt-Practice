@@ -6,8 +6,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import Badge from '@mui/icons-material/Badge';
-import { Wrapper } from './App.styles';
+import Badge from '@mui/material/Badge';
+import { Wrapper, StyledButton } from './App.styles';
 import Item from '../components/item/Item';
 
 export type CartItemType = {
@@ -31,12 +31,11 @@ const App = () => {
   const { data, isLoading, error } = useQuery<CartItemType[]>('products', getProducts);
   console.log(data);
 
-  const getTotalItems = () => {
-
+  const getTotalItems = (items: CartItemType[]) => {
+    return items.reduce((ack: number, item) => ack + item.amount, 0);
   }
 
-  const addItemToCart = (item: CartItemType) => {
-
+  const addItemToCart = (items: CartItemType) => {
   }
 
   const removeItemFromCart = () => {
@@ -48,9 +47,14 @@ const App = () => {
 
   return (
     <Wrapper>
-      <Drawer anchor='right' open={cartOpen} onClose={()=> setCartOpen(false)}>
+      <Drawer anchor='right' open={cartOpen} onClose={() => setCartOpen(false)}>
         Cart goes here
       </Drawer>
+      <StyledButton onClick={() => setCartOpen(true)}>
+        <Badge badgeContent={getTotalItems(cartItem)} color="primary">
+          <AddShoppingCartIcon />
+        </Badge>
+      </StyledButton>
       <Grid container spacing={3}>
         {data?.map((item => (
           <Grid item key={item.id} xs={12} sm={4}>
