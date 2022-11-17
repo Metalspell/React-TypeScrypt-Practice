@@ -10,7 +10,7 @@ const SideBar = () => {
         alt="my_avatar"
         className='w-32 h-32 mx-auto rounded-full'
       />
-      <h3 className='my-4 text-3xl font-medium tracking-wider'>Krasilnikov Dmytro</h3>
+      <h3 className='my-4 text-3xl font-medium tracking-wider font-inter'>Krasilnikov Dmytro</h3>
       <p className='px-2 py-1 my-3 bg-gray-200 rounded-full'>React Developer</p>
       <a
         href=''
@@ -29,7 +29,7 @@ const SideBar = () => {
       </div>
       <div
         className='py-4 my-5 bg-gray-200'
-        style={{ marginLeft: '-1rem', marginRight: '-1rem' }}
+        style={{ marginLeft: '1rem', marginRight: '1rem' }}
       >
         <div className='flex items-center justify-center space-x-2'>
           <GoLocation />
@@ -38,8 +38,17 @@ const SideBar = () => {
         <p className='my-2'>krasilnikov.dmytro@gmail.com</p>
         <p className='my-2'>+380938559908</p>
       </div>
-      <button className='w-8/12 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-400'>Send me letter!</button>
-      <button className='w-8/12 py-2 rounded-full bg-gradient-to-r from-green-400 to-blue-400'>Toggle Theme 3555</button>
+      <button
+        className='w-8/12 py-2 my-2 text-white rounded-full bg-gradient-to-r from-green-400 to-blue-400 px2'
+        onClick={()=>window.open('mailto:krasilnikov.dmytro@gmail.com')}
+      >
+        Send me letter!
+      </button>
+      <button
+        className='w-8/12 py-2 my-2 text-white rounded-full bg-gradient-to-r from-green-400 to-blue-400 px2'
+      >
+        Toggle Theme 3555
+      </button>
     </div>
   );
 }

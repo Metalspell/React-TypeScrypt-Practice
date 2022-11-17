@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["ui-sans-serif", "system-ui"],
-      kaushan: ["Kaushan Script"],
+      inter: ["сatamaran"],
     },
     boxShadow: {
       "custom-light": " 0 0 10px #313131",
