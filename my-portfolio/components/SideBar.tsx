@@ -8,7 +8,7 @@ const SideBar = () => {
       <img
         src="https://media-exp1.licdn.com/dms/image/D4E35AQG1mac39lDdEw/profile-framedphoto-shrink_200_200/0/1656586006964?e=1669204800&v=beta&t=SA3kZle-1QefFivMH_viP5rWpjOk4uJpQV2aX-qAUoY"
         alt="my_avatar"
-        className='w-32 h-32 mx-auto rounded-full'
+        className='w-32 h-32 mx-auto mt-2 rounded-full'
       />
       <h3 className='my-4 text-3xl font-medium tracking-wider font-inter'>Krasilnikov Dmytro</h3>
       <p className='px-2 py-1 my-3 bg-gray-200 rounded-full'>React Developer</p>
