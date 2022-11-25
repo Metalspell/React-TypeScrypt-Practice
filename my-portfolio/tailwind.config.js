@@ -3,7 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.tsx", "./components/**/*.tsx",
   ],
-  darkMode: "false",
+  darkMode: "class",
   theme: {
     fontFamily: {
       sans: ["ui-sans-serif", "system-ui"],
