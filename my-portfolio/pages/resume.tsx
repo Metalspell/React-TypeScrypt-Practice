@@ -56,9 +56,10 @@ const Resume = () => {
               key={items.company}
             >
               <h3 className="px-5 my-2 font-bold text-x6">
-                {items.company}
+                Company: {items.company}
               </h3>
-              <p className="px-5 text-x1">Position:
+              <p className="px-5 text-x1">
+                Position:
                 <span className="italic"> {items.position}</span>
               </p>
               <p className="px-5 text-x1">{items.month_begin} {items.year_begin} - {items.month_end} {items.year_end}</p>

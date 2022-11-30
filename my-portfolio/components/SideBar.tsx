@@ -21,7 +21,7 @@ const SideBar = () => {
         className='mx-auto mt-2 rounded-full w-38 h-38'
       />
       <h3 className='my-4 text-3xl font-medium tracking-wider font-inter'>Krasilnikov Dmytro</h3>
-      <p className='flex items-center justify-center px-2 py-3 mx-8 my-4 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:bg-black-500'>
+      <p className='flex items-center justify-center px-2 py-3 mx-8 my-4 bg-gray-200 rounded-full dark:bg-dark-200 dark:bg-black-500'>
         React Developer
       </p>
       <a
