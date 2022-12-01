@@ -25,7 +25,8 @@ const SideBar = () => {
         React Developer
       </p>
       <a
-        href=''
+        href='https://drive.google.com/file/d/1LsRMfAbq6gGs9tFL7QS3-gW8h-yFqjjq/view?usp=sharing'
+        target="_blank"
         download='name'
         className='flex items-center justify-center px-2 py-3 mx-8 my-4 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:bg-black-500'
       >
