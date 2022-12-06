@@ -10,7 +10,7 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
           <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         </Head>
-        <body className="bg-fixed bg-gradient-to-r from-green to-blue-500 dark:from-dark-500 dark:to-dark-700 dark:text-white">
+        <body className="bg-fixed bg-400 animate-gradient bg-light-theme dark:bg-hero-pattern dark:text-white">
           <Main />
           <NextScript />
         </body>
@@ -20,3 +20,5 @@ class MyDocument extends Document {
 }
 
 export default MyDocument;
+
+{/* <body className="bg-fixed bg-gradient-to-r from-green to-blue-500 dark:from-dark-500 dark:to-dark-700 dark:text-white"></body> */}

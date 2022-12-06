@@ -5,6 +5,7 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import { GoLocation } from 'react-icons/go';
 import { GiTie } from 'react-icons/gi';
 import { useTheme } from 'next-themes';
+import Image from "next/image";
 
 const SideBar = () => {
   const { theme, setTheme } = useTheme();
@@ -15,14 +16,17 @@ const SideBar = () => {
 
   return (
     <div className='row-start-1 row-end-12'>
-      <img
-        src="https://media-exp1.licdn.com/dms/image/D4E35AQG1mac39lDdEw/profile-framedphoto-shrink_200_200/0/1656586006964?e=1669982400&v=beta&t=6EOZtyQl4NhpHRy_XoJSwIoi7C56I6mR_oBRpaHyN5o"
+      <Image
+        src="/images/photo_2022-12-06_15-14-11.jpg"
         alt="my_avatar"
-        className='mx-auto mt-2 rounded-full w-38 h-38'
+        className='mx-auto mt-2 rounded-full'
+        width={180}
+        height={180}
+
       />
       <h3 className='my-4 text-3xl font-medium tracking-wider font-inter'>Krasilnikov Dmytro</h3>
-      <p className='flex items-center justify-center px-2 py-3 mx-8 my-4 bg-gray-200 rounded-full dark:bg-dark-200 dark:bg-black-500'>
-        React Developer
+      <p className='flex items-center justify-center px-2 py-3 mx-8 my-4 uppercase bg-gray-200 rounded-full dark:bg-dark-200 dark:bg-black-500'>
+        Frontend React Developer
       </p>
       <a
         href='https://drive.google.com/file/d/1LsRMfAbq6gGs9tFL7QS3-gW8h-yFqjjq/view?usp=sharing'

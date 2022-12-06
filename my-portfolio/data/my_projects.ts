@@ -8,7 +8,7 @@ export interface MyProjectsTypes {
   key_techs: string[];
 }
 
-export type Category = "HTML/CSS/JS/JQuery" | 'React' | 'ReactTS (React + TypeScript';
+export type Category = "All" | "HTML/CSS/JS/JQuery" | 'ReactJS' | 'ReactTS (React + TypeScript';
 
 export const myProjects: MyProjectsTypes[] = [
   {
@@ -26,7 +26,7 @@ export const myProjects: MyProjectsTypes[] = [
     image_link: '/images/Pokercasta.png',
     deployed_url: 'https://pokercasta.com/',
     github_url: '',
-    category: ["HTML/CSS/JS/JQuery"],
+    category: ["ReactTS (React + TypeScript"],
     key_techs: ["ReactJS", "TypeScrypt", "ReactQuery", "Formik", "Yup"],
   },
   {
@@ -35,7 +35,7 @@ export const myProjects: MyProjectsTypes[] = [
     image_link: '/images/WeatherApp.png',
     deployed_url: 'https://metalspell.github.io/Weather-app/',
     github_url: 'https://github.com/Metalspell/Weather-app',
-    category: ["HTML/CSS/JS/JQuery"],
+    category: ["ReactTS (React + TypeScript"],
     key_techs: ["ReactJS", "Redux", "TypeScrypt", "ReactQuery"],
   },
   {
@@ -44,7 +44,16 @@ export const myProjects: MyProjectsTypes[] = [
     image_link: '/images/Quiz.png',
     deployed_url: 'https://metalspell.github.io/Quiz-with-trivia-question-database/',
     github_url: 'https://github.com/Metalspell/Quiz-with-trivia-question-database',
-    category: ["HTML/CSS/JS/JQuery"],
+    category: ["ReactTS (React + TypeScript"],
     key_techs: ["ReactJS", "TypeScrypt"],
+  },
+  {
+    name: "Chat with Chuck Norris jokes",
+    description: "Chat where talking with the characters of science fiction writer Roger Zelazny, you can get in response jokes from the arsenal of the famous ruler of the universe - Chuck Norris :)",
+    image_link: '/images/Simple-chat.png',
+    deployed_url: 'https://metalspell.github.io/Simple-chat/main',
+    github_url: 'https://github.com/Metalspell/Simple-chat',
+    category: ['ReactJS'],
+    key_techs: ["ReactJS", "TypeScrypt", "Redux"],
   },
 ];

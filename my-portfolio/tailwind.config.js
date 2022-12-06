@@ -13,7 +13,16 @@ module.exports = {
       "custom-light": " 0 0 10px #313131",
       "custom-dark": "5px 5px 10px #0a0c0e , -5px -5px 10px #14161c",
     },
-
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain',
+      '400': '400%',
+      '16': '4rem',
+    },
+    backgroundImage: {
+      'light-theme': "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);",
+    },
     extend: {
       colors: {
         green: {
@@ -28,6 +37,16 @@ module.exports = {
           700: "#202125",
         },
       },
+      animation: {
+        gradient: 'gradient 15s ease infinite',
+      },
+      keyframes: {
+        gradient: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        }
+      }
     },
   },
   variants: {
