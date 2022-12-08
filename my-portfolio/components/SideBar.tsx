@@ -24,15 +24,15 @@ const SideBar = () => {
         height={180}
 
       />
-      <h3 className='my-4 text-3xl font-medium tracking-wider font-inter'>Krasilnikov Dmytro</h3>
-      <p className='flex items-center justify-center px-2 py-3 mx-8 my-4 uppercase bg-gray-200 rounded-full dark:bg-dark-200 dark:bg-black-500'>
+      <h3 className='my-4 text-3xl font-medium tracking-wider font-diplomata'>Krasilnikov Dmytro</h3>
+      <p className='flex items-center justify-center px-2 py-3 mx-8 my-4 uppercase bg-gray-200 rounded-full font-diplomata text-gold dark:bg-dark-200 dark:bg-black-500'>
         Frontend React Developer
       </p>
       <a
-        href='https://drive.google.com/file/d/1LsRMfAbq6gGs9tFL7QS3-gW8h-yFqjjq/view?usp=sharing'
+        href='https://drive.google.com/file/d/1HNwcSwQyIhUYROwdklelpeliarhioBSq/view?usp=sharing'
         target="_blank"
         download='name'
-        className='flex items-center justify-center px-2 py-3 mx-8 my-4 bg-gray-200 rounded-full cursor-pointer dark:bg-dark-200 dark:bg-black-500'
+        className='flex items-center justify-center px-2 py-3 mx-8 my-4 uppercase bg-gray-200 rounded-full cursor-pointer bg-400 dark:bg-600/100 bg-light-theme animate-gradient dark:bg-light-theme-v2 dark:animate-gradientV2 dark:bg-dark-200 dark:bg-black-500'
       >
         <GiTie className='w-6 h-6' />Download CV
       </a>
@@ -49,7 +49,6 @@ const SideBar = () => {
       </div>
       <div
         className='py-4 my-5 bg-gray-200 dark:bg-dark-200 rounded-xl'
-        style={{ marginLeft: '1rem', marginRight: '1rem' }}
       >
         <div className='flex items-center justify-center space-x-2'>
           <GoLocation />
@@ -65,18 +64,18 @@ const SideBar = () => {
           <BsTelephoneForward />
           <p className='my-2'>+380938559908</p>
         </div>
+        <button
+          className='w-8/12 py-4 my-3 text-white rounded-full animate-gradient dark:animate-gradientV2 dark:bg-600/400 dark:bg-light-theme-v2 bg-400 bg-light-theme dark:animate-gradient px2'
+          onClick={() => window.open('mailto:krasilnikov.dmytro@gmail.com')}
+        >
+          Send me letter!
+        </button>
       </div>
       <button
-        className='w-8/12 py-4 my-3 text-white rounded-full bg-gradient-to-r from-green-400 to-blue-400 px2'
-        onClick={() => window.open('mailto:krasilnikov.dmytro@gmail.com')}
-      >
-        Send me letter!
-      </button>
-      <button
-        className='w-8/12 py-4 mt-3 mb-8 text-white rounded-full bg-gradient-to-r from-green-400 to-blue-400 px2'
+        className='w-8/12 py-4 mt-3 mb-8 text-white rounded-full animate-gradient bg-400 bg-light-theme dark:bg-light-theme-v2 dark:animate-gradientV2 px2 dark:bg-600/400'
         onClick={selectTheme}
       >
-        Dark theme / LightTheme
+        Dark theme / Light theme
       </button>
     </div >
   );
