@@ -15,7 +15,6 @@ const Index = () => {
         Excellent problem-solving skills and ability to perform well in a team.
         I will be happy to help the company achieve its goals and grow with it as a
         professional.
-        The principle by which I live now: "Rise to a new level!"
       </h5>
       <MyStory />
     </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth } from "../context/mainContext";
 
 type Props = {
   activeItem: string;
@@ -9,11 +10,11 @@ type Props = {
   route: string;
 }
 
-const NavItem: React.FC<Props> = ({ activeItem, setActiveItem, name, route }) => {
+export const NavItem: React.FC<Props> = ({ activeItem, setActiveItem, name, route }) => {
   return activeItem !== name ? (
     <Link href={route}>
       <span
-        onClick={() => setActiveItem(name)}
+        onClick={() => { setActiveItem(name) }}
         className='text-green-500 hover:'
       >
         {name}
@@ -23,7 +24,7 @@ const NavItem: React.FC<Props> = ({ activeItem, setActiveItem, name, route }) =>
 }
 
 const NavBar = () => {
-  const [activeItem, setActiveItem] = useState<string>('');
+  const {activeItem, setActiveItem } = useAuth();
 
   const { pathname } = useRouter();
 
@@ -40,6 +41,10 @@ const NavBar = () => {
     else if (pathname === "/resume") {
       setActiveItem('Resume');
     }
+    else if (pathname === "/mailsender") {
+      setActiveItem('Send me letter!');
+    }
+    console.log(activeItem)
   }, [])
 
 

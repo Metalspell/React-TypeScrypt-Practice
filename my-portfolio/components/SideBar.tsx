@@ -5,7 +5,38 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import { GoLocation } from 'react-icons/go';
 import { GiTie } from 'react-icons/gi';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { useRouter } from "next/router";
+import Link from 'next/link';
 import Image from "next/image";
+import { useAuth } from "../context/mainContext";
+
+type Props = {
+  // activeItem: string;
+  setActiveItem: (value: string) => void;
+  name: string;
+  route: string;
+}
+
+type ButtonProps = {
+  route: string;
+}
+
+export const NavItem: React.FC<Props> = ({ setActiveItem, name, route }) => {
+  return (
+    <Link
+      href={route}
+      className='w-8/12 py-6'
+    >
+      <span
+        onClick={() => { setActiveItem(name) }}
+        className='w-8/12 px-10 py-5 my-3 text-green-500 hover:'
+      >
+        {name}
+      </span>
+    </Link>
+  )
+}
 
 const SideBar = () => {
   const { theme, setTheme } = useTheme();
@@ -13,6 +44,8 @@ const SideBar = () => {
   const selectTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   }
+
+  const { setActiveItem } = useAuth();
 
   return (
     <div className='row-start-1 row-end-12'>
@@ -66,9 +99,12 @@ const SideBar = () => {
         </div>
         <button
           className='w-8/12 py-4 my-3 text-white rounded-full animate-gradient dark:animate-gradientV2 dark:bg-600/400 dark:bg-light-theme-v2 bg-400 bg-light-theme dark:animate-gradient px2'
-          onClick={() => window.open('mailto:krasilnikov.dmytro@gmail.com')}
         >
-          Send me letter!
+          <NavItem
+            setActiveItem={setActiveItem}
+            name='Send me letter!'
+            route='/mailsender'
+          />
         </button>
       </div>
       <button

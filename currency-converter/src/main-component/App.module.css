@@ -1,0 +1,30 @@
+.generalWrapper {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainTitle {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.actionButton {
+  margin-top: 2rem;
+}
+
+.generalWrapper .formControl {
+ display: flex;
+ margin-top: 2vw;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
