@@ -5,13 +5,24 @@ export enum SelectedPage {
   ContactUs = "contactus"
 }
 
-export type SelectedPageProps = {
-  selectedPage: SelectedPage;
+type SelectedPageVoidProps = {
   setSelectedPage: (value: SelectedPage) => void;
 }
 
-export type LinksProps = {
+export type SelectedPageProps = SelectedPageVoidProps & {
+  isTopOfPage: boolean;
+  selectedPage: SelectedPage;
+}
+
+export type LinksProps = SelectedPageVoidProps & {
   page: string;
   selectedPage: SelectedPage;
+}
+
+export type ActionButtonProps = SelectedPageVoidProps & {
+  children: React.ReactNode;
   setSelectedPage: (value: SelectedPage) => void;
 }
+
+export type HomePageProps = SelectedPageVoidProps;
+export type BenefitsPageProps = SelectedPageVoidProps;
