@@ -70,11 +70,15 @@ export default function Home({ setSelectedPage }: HomePageProps) {
         <div
           className="flex justify-center basis-3/5 md:z-10 md:ml-40 md:mt-16 md:justify-items-end"
         >
-          <img alt="home-pageGraphic" src={HomePageGraphic} />
+          <img
+            alt="home-pageGraphic"
+            src={HomePageGraphic}
+            className='max-[1024px]:mt-10'
+          />
         </div>
       </motion.div>
       {isAboveMediumScreens && (
-        <div className="h-[150px] w-full bg-primary-100 py-10">
+        <div className="h-[150px] w-full bg-primary-100 py-10 mt-10">
           <div className="flex items-center justify-center">
             <div className="flex items-center justify-around w-full gap-8">
               <img className='w-40' alt="redbull-sponsor" src={SponsorEvolv} />

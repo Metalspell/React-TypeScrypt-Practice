@@ -1,7 +1,7 @@
 export enum SelectedPage {
   Home = 'home',
   Benefits = "benefits",
-  OurClasses = "ourclasses",
+  OurClasses = "gallery",
   ContactUs = "contactus"
 }
 
@@ -26,3 +26,32 @@ export type ActionButtonProps = SelectedPageVoidProps & {
 
 export type HomePageProps = SelectedPageVoidProps;
 export type BenefitsPageProps = SelectedPageVoidProps;
+export type GalleryPageProps = SelectedPageVoidProps;
+
+export type MainTextProps = {
+  children: React.ReactNode;
+}
+
+export type IBenefitsItemProps = {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+  setSelectedPage: (value: SelectedPage) => void;
+};
+export interface BenefitType {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+
+export type GalleryItemProps = {
+  name: string;
+  description: string | undefined;
+  image: string;
+};
+
+export type GalleryType = {
+  name: string;
+  description?: string;
+  image: string;
+}
