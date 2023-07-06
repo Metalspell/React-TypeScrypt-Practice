@@ -27,6 +27,7 @@ export type ActionButtonProps = SelectedPageVoidProps & {
 export type HomePageProps = SelectedPageVoidProps;
 export type BenefitsPageProps = SelectedPageVoidProps;
 export type GalleryPageProps = SelectedPageVoidProps;
+export type ContactUsProps = SelectedPageVoidProps;
 
 export type MainTextProps = {
   children: React.ReactNode;

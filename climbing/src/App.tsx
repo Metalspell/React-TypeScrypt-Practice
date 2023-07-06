@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 import { SelectedPage } from "@/types";
 import Home from "@/componets/Home";
 import Benefits from "./componets/benefits/Benefits";
+import Gallery from "./componets/gallery/Gallery";
+import ContactUs from "./componets/ContactUs";
+import Footer from "./componets/Footer";
 
 function App() {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true)
@@ -38,6 +41,13 @@ function App() {
       <Benefits
         setSelectedPage={setSelectedPage}
       />
+      <Gallery
+        setSelectedPage={setSelectedPage}
+      />
+      <ContactUs 
+        setSelectedPage={setSelectedPage}
+      />
+      <Footer />
     </section>
   )
 }

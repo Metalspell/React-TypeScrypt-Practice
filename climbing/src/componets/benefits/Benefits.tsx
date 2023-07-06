@@ -50,13 +50,13 @@ export default function Benefits({ setSelectedPage }: BenefitsPageProps) {
           ))}
         </motion.div>
 
-        <div className="items-center justify-between gap-20 mt-16 md:mt-28 md:flex">
+        <div className="items-center justify-between gap-20 mt-16 lg:mt-28 md:flex">
           <img
-            className="mx-auto"
+            className="mx-auto md:w-1/2"
             alt="benefits-page-graphic"
             src={BenefitsPageGraphic}
           />
-          <div>
+          <div className="max-[1050px]:mt-10">
             <div className="relative">
               <div className="before:absolute before:-top-20 before:-left-20 before:z-[1] before:content-abstractwaves">
                 <motion.div
@@ -71,7 +71,7 @@ export default function Benefits({ setSelectedPage }: BenefitsPageProps) {
                 >
                   <MainText>
                     MILLIONS OF HAPPY MEMBERS GETTING{" "}
-                    <span className="text-primary-500">FIT</span>
+                    <span className="text-primary-500">CLIMBING</span>
                   </MainText>
                 </motion.div>
               </div>
@@ -86,7 +86,7 @@ export default function Benefits({ setSelectedPage }: BenefitsPageProps) {
                 visible: { opacity: 1, x: 0 },
               }}
             >
-              <p className="my-5">
+              <p className="my-5 text-secondary-text">
                 Nascetur aenean massa auctor tincidunt. Iaculis potenti amet
                 egestas ultrices consectetur adipiscing ultricies enim. Pulvinar
                 fames vitae vitae quis. Quis amet vulputate tincidunt at in
@@ -94,7 +94,7 @@ export default function Benefits({ setSelectedPage }: BenefitsPageProps) {
                 tellus. Ullamcorper arcu id pretium sapien proin integer nisl.
                 Felis orci diam odio.
               </p>
-              <p className="mb-5">
+              <p className="mb-5 text-secondary-text">
                 Fringilla a sed at suspendisse ut enim volutpat. Rhoncus vel est
                 tellus quam porttitor. Mauris velit euismod elementum arcu neque
                 facilisi. Amet semper tortor facilisis metus nibh. Rhoncus sit
