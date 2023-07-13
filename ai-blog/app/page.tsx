@@ -1,8 +1,22 @@
+import Trending from "./home/Trending"
+
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between min-h-screen p-24">
-      
-    
+    <main className="px-10 leading-7">
+      <Trending />
+      <div className="basis-3/4">
+        <div className="gap-10 mb-5 md:flex">
+          {/* <Tech />
+          <Travel />
+          <Other /> */}
+          <div className="hidden md:block">
+            {/* <Subscribe /> */}
+          </div>
+        </div>
+        <div className="basis-1/4">
+          {/* <Sidebar /> */}
+        </div>
+      </div>
     </main>
   )
 }
