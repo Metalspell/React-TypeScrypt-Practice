@@ -33,7 +33,7 @@ export type AllPurposeItemProps = {
   isLongForm?: boolean;
 }
 
-export type FormattedPost {
+export type FormattedPost = {
   id: string;
   createdAt: string;
   updatedAt: string;
