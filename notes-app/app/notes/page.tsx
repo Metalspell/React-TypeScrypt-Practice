@@ -43,8 +43,10 @@ const NotesPage = () => {
     if (noteIndex !== -1) {
       const updatedNotes = [...notes];
       updatedNotes[noteIndex] = updatedNote;
-      setEditingNoteId(null);
       setNotes(updatedNotes);
+      console.log(notes)
+      console.log(1)
+      setEditingNoteId(null);
     }
   };
 

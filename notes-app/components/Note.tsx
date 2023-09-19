@@ -31,9 +31,9 @@ const Note = ({ note, onDelete, onEdit, onTagClick }: NoteProps) => {
                 onClick={() => onTagClick(tag)}
               >
                 #{tag}
-              </span>  
+              </span>
             )
-          }
+            }
           </p>
         </div>
       </div>
